@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiCadastroEventos.Views.CadastroEventos"
+             Title="CadastroEventos"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="CornflowerBlue">
+
+    <VerticalStackLayout Padding="20"
+                         Spacing="10">
+        <Label 
+            Text="Cadastro de Eventos"
+            FontFamily="Kranky"
+            FontSize="35"
+            TextColor="DarkBlue" />
+
+        <Frame Padding="10" BackgroundColor="SkyBlue">
+            <VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Grid RowDefinitions="Auto, Auto, Auto"
+                        ColumnDefinitions="3*, *, *"
+                        Margin="10">
+
+                        <Label Grid.Row="0" Grid.Column="0" 
+                            Text="Número de Participantes:" />
+
+                        <Label Grid.Row="0" Grid.Column="1"
+                            Text="{Binding Value}"
+                            BindingContext="{x:Reference num_part}" />
+
+                        <Stepper Grid.Row="0" Grid.Column="2"
+                             x:Name="num_part"
+                               Minimum="0"
+                               Maximum="500"
+                               Increment="1" />                        
+                    </Grid>                    
+
+                    
+                    <Picker Margin="10"
+                            x:Name="pck_nome"
+                            Title="Nome do Evento"
+                            ItemDisplayBinding="{Binding Descricao}"/>
+
+                    <Grid Margin="10">
+
+                        <Picker x:Name="pck_local"
+                              Title="Local do Evento"
+                                ItemDisplayBinding="{Binding Descricao2}"
+                                TextColor="DarkBlue"/>
+                    </Grid>                    
+                    
+
+                    <Frame Padding="10" Margin="10" 
+                       BackgroundColor="CornflowerBlue">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="Período do Evento"
+                                   TextColor="DarkBlue"
+                                   FontFamily="Kranky"
+                                   FontSize="22"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                                <Label Text="Data de Início: "/>
+                                <DatePicker x:Name="dtpck_inicio"
+                                            DateSelected="dtpck_inicio_DateSelected"
+                                            Format="dd/MM/yyyy" />
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
+                                <Label Text="Data de Término: "/>
+                                <DatePicker x:Name="dtpck_termino"
+                                 Format="dd/MM/yyyy" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>                                                
+                                                    
+                    </Frame>
+
+                </VerticalStackLayout>
+
+                <Button BackgroundColor="DarkBlue"
+                    Text="Avançar"
+                    HorizontalOptions="Center"
+                    Clicked="Button_Clicked" />
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

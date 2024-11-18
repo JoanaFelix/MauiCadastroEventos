@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiCadastroEventos.Views.ResumoEvento"
+             Title="ResumoEvento"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="CornflowerBlue">
+    
+    <VerticalStackLayout VerticalOptions="CenterAndExpand">
+
+        <Label Text="{Binding EventoSelecionado.Descricao}" 
+               TextColor="DarkBlue"
+               FontFamily="Kranky"
+               FontSize="35"
+               HorizontalTextAlignment="Center"/>
+
+        <Frame Margin="10" BackgroundColor="SkyBlue">
+            <HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Número de Participantes : " />
+                    <Label Text="{Binding NumeroParticipantes}"
+                           TextColor="DarkBlue"/>
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>            
+        </Frame>
+
+        <Frame Margin="10" BackgroundColor="SkyBlue">
+            <HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Local do Evento : " />
+                    <Label Text="{Binding LocalSelecionado.Descricao2}" 
+                           TextColor="DarkBlue"/>
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Frame Margin="10" BackgroundColor="SkyBlue">
+            <Grid ColumnDefinitions="*, *, *"
+                RowDefinitions="Auto, Auto, Auto">
+                <Label Grid.Row="0" Grid.Column="0" Text="Data de Início:" />
+                <Label Grid.Row="0" Grid.Column="1" Text="Data de Término:" />
+                <Label Grid.Row="0" Grid.Column="2" Text="Duração :" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="{Binding DataInicio, StringFormat='{}{0:dd/MM/yyyy}'}" 
+                       TextColor="DarkBlue"/>  
+                
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DataTermino, StringFormat='{}{0:dd/MM/yyyy}'}" 
+                       TextColor="DarkBlue"/>
+                
+                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Duracao}" 
+                       TextColor="DarkBlue"/>
+            </Grid>
+        </Frame>
+
+        <Frame Margin="10" BackgroundColor="SkyBlue">
+            <HorizontalStackLayout>
+                <Label Text="Custo: R$" />
+                <Label Text="{Binding CustoTotal}"
+                       TextColor="DarkBlue"/>
+            </HorizontalStackLayout>
+        </Frame>
+
+        <Button Text="Voltar" BackgroundColor="DarkBlue" 
+                HorizontalOptions="Center"
+                Clicked="Button_Clicked" />
+
+    </VerticalStackLayout>
+</ContentPage>
